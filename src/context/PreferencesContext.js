@@ -1,10 +1,10 @@
 import {createContext} from "react";
 
-const PreferenceContext = createContext(()={
-    theme: "";
-    toggleTheme: ()=> {
+const PreferencesContext = createContext(
+   {
+    theme: '',
+    toggleTheme: ()=> {},
+   }
+);
 
-    }
-});
-
-export default PreferenceContext;
+export default PreferencesContext;

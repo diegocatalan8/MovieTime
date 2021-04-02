@@ -3,7 +3,7 @@ import {StatusBar} from "react-native";
 import {Provider as PaperProvider, DarkTheme as DarkThemePaper, DefaultTheme as DefaultThemePaper} from "react-native-paper";
 import {NavigationContainer, DarkTheme as DarkThemeNavigation, DefaultTheme as DefaultThemeNavigation} from "@react-navigation/native"
 import Navigation from "./src/navigation/Navigation";
-import PreferenceContext from "./src/context/PreferencesContext";
+import PreferencesContext from "./src/context/PreferencesContext";
 
 export default function App(){
   const [theme, setTheme] = useState("dark");
@@ -15,21 +15,21 @@ export default function App(){
   DarkThemeNavigation.colors.background="#192734";
   DarkThemeNavigation.colors.card="#15212b"
   
-  const toggleTheme(){
+  const toggleTheme =()=>{
     setTheme(theme === "dark" ? "light" : "dark");
   }
 
   const preference = useMemo(
     ()=>(
     {
-      togleTheme,
+      toggleTheme,
       theme,
     }  ),
 
     [theme],
   );
   return(
-      <PreferenceContext.Provider value={preference}>
+      <PreferencesContext.Provider value={preference}>
       
          <PaperProvider theme={theme === "dark" ? DarkThemePaper : DefaultThemePaper} >
          <StatusBar barStyle={theme === "dark" ? "light-content" : "dark-content"}/>      
@@ -42,7 +42,7 @@ export default function App(){
 
           </PaperProvider>  
       
-      </PreferenceContext.Provider>
+      </PreferencesContext.Provider>
 
     
   );
