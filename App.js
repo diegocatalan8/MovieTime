@@ -13,7 +13,7 @@ export default function App(){
   DarkThemePaper.colors.accent="#1ae1f2";
 
   DarkThemeNavigation.colors.background="#192734";
-  DarkThemeNavigation.colors.card="#15212b"
+  DarkThemeNavigation.colors.card="#15212b";
   
   const toggleTheme =()=>{
     setTheme(theme === "dark" ? "light" : "dark");
@@ -33,7 +33,7 @@ export default function App(){
       
          <PaperProvider theme={theme === "dark" ? DarkThemePaper : DefaultThemePaper} >
          <StatusBar barStyle={theme === "dark" ? "light-content" : "dark-content"}/>      
-                    <NavigationContainer theme={theme === "dark" ? DarkThemePaper : DefaultThemePaper}>
+                    <NavigationContainer theme={theme === "dark" ? DarkThemeNavigation : DefaultThemeNavigation}>
 
                                     
                                     <Navigation/>
