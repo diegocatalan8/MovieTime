@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-import {View} from "react-native";
+
 import {DrawerContentScrollView} from "@react-navigation/drawer";
 import {Drawer, Switch, TouchableRipple, Text} from "react-native-paper";
 import { NavigationHelpersContext } from "@react-navigation/core";
