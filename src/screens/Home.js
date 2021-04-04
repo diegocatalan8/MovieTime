@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import {View, Text, ScrollView, StyleSheet} from "react-native";
+import {Title} from "react-native-paper";
 import {getNewsMoviesApi} from "../api/movies"
 
 export default function Home(){
@@ -18,11 +19,24 @@ export default function Home(){
    return( 
        //componente para que la pantalla sea con escroll y el atributo indica que el escroll sea invicible
             <ScrollView showsVerticalScrollIndicator={false}>
-
+                    {newMovies &&(
+                        <View styles={styles.news}>
+                            <Title styles={styles.newsTitle}>Nuevas Peliculas</Title>
+                        </View>
+                    )}
             </ScrollView>
 );
 }
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
+    news:{
+        marginVertical:10,
+    },
 
+    newsTitle:{
+        marginBottom:10,
+        marginHorizontal:20,
+        fontWeight: "bold",
+        fontSize:20,
+    },
 });
