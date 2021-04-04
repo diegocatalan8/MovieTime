@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import {View, Text} from "react-native";
+import {View, Text, ScrollView, StyleSheet} from "react-native";
 import {getNewsMoviesApi} from "../api/movies"
 
 export default function Movie(){
@@ -16,8 +16,13 @@ export default function Movie(){
 
     //retornamos el componente
    return( 
-<View>
-    <Text>Estamos en MOVIE</Text>
-</View>
+       //componente para que la pantalla sea con escroll y el atributo indica que el escroll sea invicible
+            <ScrollView showsVerticalScrollIndicator={false}>
+
+            </ScrollView>
 );
 }
+
+const style = StyleSheet.create({
+
+});
