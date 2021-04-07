@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import {View, Text, ScrollView, StyleSheet} from "react-native";
 import {Title} from "react-native-paper";
+import CarouselVertical from "../components/CarouselVertical";
 import {getNewsMoviesApi} from "../api/movies"
 
 export default function Home(){
@@ -24,6 +25,7 @@ export default function Home(){
                     {newMovies &&(
                         <View styles={styles.news}>
                             <Title styles={styles.newsTitle}>Nuevas Peliculas</Title>
+                            <CarouselVertical data={newMovies}/>
                         </View>
                     )}
             </ScrollView>
