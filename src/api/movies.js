@@ -7,9 +7,9 @@ export function getNewsMoviesApi(page = 1){
 
         return fetch(url)
         .then((response)=>{
-                return responese.json();
+                return response.json();
         })
-        .then((result)=>{
-            return result;
+        .then((results)=>{
+            return results;
         })
 }

@@ -7,13 +7,15 @@ import {getNewsMoviesApi} from "../api/movies"
 
 export default function Home(){
     //Creamos un estado para obtener las peliculas
-    const [newMovies, setMovies] = useState(null);
+    const [newMovies, setNewMovies] = useState(null);
     //usamos useEfect
     useEffect(()=>{
         getNewsMoviesApi().then((response)=>{
-            setMovies(response.result);
+            setNewMovies(response.results);
         });
-    });
+    }, []);
+
+    
 
     //retornamos el componente
    return( 
