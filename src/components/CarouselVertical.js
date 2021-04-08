@@ -62,7 +62,7 @@ const styles = StyleSheet.create(
         title:{
             marginHorizontal:10,
             marginTop:10,
-            textAlign:"center", //se agrego esta propiedad
+            textAlign:"center",
 
         },
     }
