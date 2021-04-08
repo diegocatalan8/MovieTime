@@ -6,6 +6,7 @@ import {Title} from "react-native-paper";
 import CarouselVertical from "../components/CarouselVertical";
 import {getNewsMoviesApi} from "../api/movies"
 
+
 export default function Home(){
     //Creamos un estado para obtener las peliculas
     const [newMovies, setNewMovies] = useState(null);
@@ -42,5 +43,6 @@ const styles = StyleSheet.create({
         marginHorizontal:20,
         fontWeight: "bold",
         fontSize:20,
+    
     },
 });
