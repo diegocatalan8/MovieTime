@@ -48,20 +48,21 @@ const styles = StyleSheet.create(
             shadowColor:"#000",
             shadowOffset:{
                 width:0,
-                height:10
+                height:10,
             },
             shadowOpacity: 1,
             shadowRadius:10,
         },
         image:{
             width:"100%",
-            height:450,
+            height:350,
             borderRadius:20
 
         },
         title:{
             marginHorizontal:10,
             marginTop:10,
+            textAlign:"center",
 
         },
     }
