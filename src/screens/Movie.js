@@ -2,7 +2,8 @@ import React from "react";
 import {View, Text, ScrollView, StyleSheet} from "react-native";
 import {getNewsMoviesApi} from "../api/movies"
 
-export default function Movie(){
+export default function Movie(props){
+    console.log(props);
     
 
     

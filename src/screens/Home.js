@@ -7,7 +7,9 @@ import CarouselVertical from "../components/CarouselVertical";
 import {getNewsMoviesApi} from "../api/movies"
 
 
-export default function Home(){
+export default function Home(props){
+    //destructuramos props
+    const {navigation} = props;
     //Creamos un estado para obtener las peliculas
     const [newMovies, setNewMovies] = useState(null);
     //usamos useEfect
@@ -26,7 +28,7 @@ export default function Home(){
                     {newMovies &&(
                         <View styles={styles.news}>
                             <Title styles={styles.newsTitle}>Nuevas Peliculas</Title>
-                            <CarouselVertical data={newMovies}/>
+                            <CarouselVertical data={newMovies} navigation={navigation}/>
                         </View>
                     )}
             </ScrollView>
@@ -43,6 +45,7 @@ const styles = StyleSheet.create({
         marginHorizontal:20,
         fontWeight: "bold",
         fontSize:20,
+        
     
     },
 });
