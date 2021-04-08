@@ -4,7 +4,7 @@ import { useState } from "react";
 import {View, Text, ScrollView, StyleSheet} from "react-native";
 import {Title} from "react-native-paper";
 import CarouselVertical from "../components/CarouselVertical";
-import {getNewsMoviesApi} from "../api/movies"
+import {getNewsMoviesApi, getAllGenresApi} from "../api/movies"
 
 
 export default function Home(props){
@@ -12,13 +12,21 @@ export default function Home(props){
     const {navigation} = props;
     //Creamos un estado para obtener las peliculas
     const [newMovies, setNewMovies] = useState(null);
-    //usamos useEfect
+    //creamos un estado para obtener los generos de las peliculas
+    const [genreMovies, setGenreMovies]= useState(null);
+   
+    //usamos useEfect para getNewsMoviesApi
     useEffect(()=>{
         getNewsMoviesApi().then((response)=>{
             setNewMovies(response.results);
         });
     }, []);
-
+//usamos useEfect para getAllGenresApi
+    useEffect(()=>{
+            getAllGenresApi().then((response)=>{
+                setGenreMovies(response);
+            })
+    }, []);
     
 
     //retornamos el componente
@@ -47,7 +55,7 @@ const styles = StyleSheet.create({
         marginBottom:10,
         marginHorizontal:20,
         fontWeight: "bold",
-        fontSize:20,
+        fontSize:22,
     },
 
     genres:{

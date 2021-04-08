@@ -35,3 +35,14 @@ export function getGenreMovieApi(idGenres){
                 return arrayGenres;
         })
 }
+
+//peticion para obtener todos los generos de las peliculas
+export function getAllGenresApi(){
+        const url =`${API_HOST}/genre/movie/list?api_key=${API_KEY}&lenguage=${LANG}`;
+
+        return fetch(url).then((response)=>{
+                return response.json();
+        }).then((result)=>{
+                return result;
+        })
+}
