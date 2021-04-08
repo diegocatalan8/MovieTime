@@ -24,6 +24,14 @@ export function getGenreMovieApi(idGenres){
                 return response.json();
         })
         .then((result)=>{
-                return result;
+                const arrayGenres = [];
+                idGenres.forEach(id => {
+                        result.genres.forEach((item)=>{
+                                if(item.id === id) arrayGenres.push(item.name);
+
+                                
+                        })
+                });
+                return arrayGenres;
         })
 }

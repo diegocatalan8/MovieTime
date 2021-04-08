@@ -4,6 +4,7 @@ import {Text, Title} from "react-native-paper"
 import Carousel from "react-native-snap-carousel";
 import {BASE_PATH_IMG} from "../utils/constants";
 import {getGenreMovieApi} from "../api/movies";
+import {map, size} from "lodash";
 
 
 
@@ -28,10 +29,15 @@ export default function CarouselVertical(props){
 function RenderItem(props){
 
     const {data} = props;
-    const {title, poster_path} = data.item;
+    const {title, poster_path, genre_ids} = data.item;
+    const [genres, setGenres] = useState(null);
     const imageUrl = `${BASE_PATH_IMG}/w500${poster_path}`;
     
-    
+    useEffect(()=>{
+        getGenreMovieApi(genre_ids).then((response)=> {
+            setGenres(response);
+        })
+    }, []);
 
 
     return(
@@ -39,6 +45,16 @@ function RenderItem(props){
                         <View style={styles.card}>
                             <Image style={styles.image} source={{uri:imageUrl}}/>
                             <Title style={styles.title}>{title}</Title>
+                            <View style={styles.genres}>
+                            {genres &&(
+                                map(genres, (genre, index)=> (
+                                        <Text key={index} style={styles.genre}>
+                                        {genre}
+                                        {index !== size(genres)-1 && ", "}
+                                        </Text>
+                                ))
+                            )}
+                            </View>
                         </View>
                 </TouchableWithoutFeedback>
     );
@@ -58,15 +74,25 @@ const styles = StyleSheet.create(
         },
         image:{
             width:"100%",
-            height:350,
+            height:400,
             borderRadius:20
 
         },
         title:{
             marginHorizontal:10,
             marginTop:10,
-            textAlign:"center",
+            
 
         },
+        genres:{
+            flexDirection: "row",
+            marginHorizontal: 10,
+
+        },
+        genre:{
+            fontSize: 12,
+            color:"#8997a5",
+            
+        }
     }
 );
