@@ -12,7 +12,7 @@ export default function App(){
   DarkThemePaper.colors.primary="#1ae1f2";
   DarkThemePaper.colors.accent="#1ae1f2";
 
-  DarkThemeNavigation.colors.background="#000";
+  DarkThemeNavigation.colors.background="#2F2D2D";
   DarkThemeNavigation.colors.card="#000";
   
   const toggleTheme =()=>{
