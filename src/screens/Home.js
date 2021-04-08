@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import {View, Text, ScrollView, StyleSheet} from "react-native";
 import {Title} from "react-native-paper";
+import {map} from "lodash";
 import CarouselVertical from "../components/CarouselVertical";
 import {getNewsMoviesApi, getAllGenresApi} from "../api/movies"
 
@@ -13,7 +14,9 @@ export default function Home(props){
     //Creamos un estado para obtener las peliculas
     const [newMovies, setNewMovies] = useState(null);
     //creamos un estado para obtener los generos de las peliculas
-    const [genreMovies, setGenreMovies]= useState(null);
+    const [genreList, setGenreList]= useState([]);
+    //creamos un estado para seleccionar un genero en especifico
+    const [genreSelected, setGenreSelected] = useState(28);
    
     //usamos useEfect para getNewsMoviesApi
     useEffect(()=>{
@@ -24,10 +27,13 @@ export default function Home(props){
 //usamos useEfect para getAllGenresApi
     useEffect(()=>{
             getAllGenresApi().then((response)=>{
-                setGenreMovies(response);
+                setGenreList(response.genres);
             })
     }, []);
-    
+    //funcion de seleccion de genero
+    const onChangeGenre = (newGenreId) => {
+            setGenreSelected(newGenreId);
+    }
 
     //retornamos el componente
    return( 
@@ -41,6 +47,15 @@ export default function Home(props){
               )}
                     <View style={styles.genres}>
                         <Title style={styles.genresTitle}>Películas por genero</Title>
+                        <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.genreList}>
+                            {map (genreList, (genre)=>
+                                    (<Text key={genre.id} style={[styles.genre, {color: genre.id !== genreSelected ? "#8697a5" : "#fff"}]} onPress={()=>{
+                                        onChangeGenre(genre.id);
+                                    }}>
+                                        {genre.name}
+                                    </Text>)
+                            )}
+                        </ScrollView>
                     </View>
             </ScrollView>
 );
@@ -67,5 +82,17 @@ const styles = StyleSheet.create({
         marginHorizontal:20,
         fontWeight:"bold",
         fontSize:26,
+    },
+    genreList:{
+        marginTop:5,
+        marginBottom:15,
+        paddingHorizontal:20,
+        padding:10,
+        
+    },
+    genre:{
+        marginRight:20,
+        fontSize:16,
+
     }
 });
