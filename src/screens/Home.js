@@ -32,7 +32,7 @@ export default function Home(props){
                 </View>
               )}
                     <View style={styles.genres}>
-                        <Title style={styles.genresTitle}>Peliculas por genero</Title>
+                        <Title style={styles.genresTitle}>Películas por genero</Title>
                     </View>
             </ScrollView>
 );
