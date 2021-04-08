@@ -1,3 +1,4 @@
+import { result } from "lodash";
 import {API_HOST, API_KEY, LANG} from "../utils/constants";
 
 
@@ -9,7 +10,20 @@ export function getNewsMoviesApi(page = 1){
         .then((response)=>{
                 return response.json();
         })
-        .then((results)=>{
-            return results;
+        .then((result)=>{
+            return result;
+        })
+}
+
+//peticion para obtener el genero de las peliculas
+export function getGenreMovieApi(idGenres){
+        const url = `${API_HOST}/genre/movie/list?api_key=${API_KEY}&lenguage=${LANG}`;
+
+        return fetch(url)
+        .then((response)=>{
+                return response.json();
+        })
+        .then((result)=>{
+                return result;
         })
 }
