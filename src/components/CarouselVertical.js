@@ -71,6 +71,7 @@ function RenderItem(props){
 const styles = StyleSheet.create(
     {
         card:{
+            
             shadowColor:"#000",
             shadowOffset:{
                 width:0,

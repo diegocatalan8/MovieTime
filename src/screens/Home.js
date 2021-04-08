@@ -25,19 +25,22 @@ export default function Home(props){
    return( 
        //componente para que la pantalla sea con escroll y el atributo indica que el escroll sea invicible
             <ScrollView showsVerticalScrollIndicator={false}>
-                    {newMovies &&(
-                        <View styles={styles.news}>
-                            <Title styles={styles.newsTitle}>Nuevas Peliculas</Title>
-                            <CarouselVertical data={newMovies} navigation={navigation}/>
-                        </View>
-                    )}
+            {newMovies && (
+                <View style={styles.news}>
+                  <Title style={styles.newsTitle}>Nuevas películas</Title>
+                  <CarouselVertical data={newMovies} navigation={navigation} />
+                </View>
+              )}
+                    <View style={styles.genres}>
+                        <Title style={styles.genresTitle}>Peliculas por genero</Title>
+                    </View>
             </ScrollView>
 );
 }
 
 const styles = StyleSheet.create({
     news:{
-        marginVertical:10,
+        marginVertical:10
     },
 
     newsTitle:{
@@ -45,7 +48,16 @@ const styles = StyleSheet.create({
         marginHorizontal:20,
         fontWeight: "bold",
         fontSize:20,
-        
-    
     },
+
+    genres:{
+        marginTop:20,
+        marginBottom:50
+
+    },
+    genresTitle:{
+        marginHorizontal:20,
+        fontWeight:"bold",
+        fontSize:26,
+    }
 });
