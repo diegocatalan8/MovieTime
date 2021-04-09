@@ -5,6 +5,7 @@ import {View, Text, ScrollView, StyleSheet} from "react-native";
 import {Title} from "react-native-paper";
 import {map} from "lodash";
 import CarouselVertical from "../components/CarouselVertical";
+import CarouselMulti from "../components/CarouselMulti";
 import {getNewsMoviesApi, getAllGenresApi, getGenreMoviesApi} from "../api/movies";
 
 
@@ -65,6 +66,9 @@ export default function Home(props){
                                     </Text>)
                             )}
                         </ScrollView>
+                        {genreMovies &&(
+                           <CarouselMulti data={genreMovies} navigation={navigation}/>
+                        )}
                     </View>
             </ScrollView>
 );
