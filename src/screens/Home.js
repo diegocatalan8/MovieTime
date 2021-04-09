@@ -5,7 +5,8 @@ import {View, Text, ScrollView, StyleSheet} from "react-native";
 import {Title} from "react-native-paper";
 import {map} from "lodash";
 import CarouselVertical from "../components/CarouselVertical";
-import {getNewsMoviesApi, getAllGenresApi} from "../api/movies"
+import {getNewsMoviesApi, getAllGenresApi, getGenreMoviesApi} from "../api/movies";
+
 
 
 export default function Home(props){
@@ -17,6 +18,8 @@ export default function Home(props){
     const [genreList, setGenreList]= useState([]);
     //creamos un estado para seleccionar un genero en especifico
     const [genreSelected, setGenreSelected] = useState(28);
+    //estado para guardar las peliculas que hemos obtenido
+    const [genreMovies, setGenreMovies] = useState(null);
    
     //usamos useEfect para getNewsMoviesApi
     useEffect(()=>{
@@ -30,6 +33,12 @@ export default function Home(props){
                 setGenreList(response.genres);
             })
     }, []);
+//usamos useEffect para getGenreMoviesApi
+    useEffect(()=>{
+        getGenreMoviesApi(genreSelected).then((response)=>{
+            setGenreMovies(response.results);
+        })
+    }, [genreSelected]);
     //funcion de seleccion de genero
     const onChangeGenre = (newGenreId) => {
             setGenreSelected(newGenreId);

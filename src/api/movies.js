@@ -46,3 +46,16 @@ export function getAllGenresApi(){
                 return result;
         })
 }
+
+
+//peticion para obtener las peliculas deacuerdo al genero
+export function  getGenreMoviesApi(idGenres) {
+        const url = `${API_HOST}/discover/movie?api_key=${API_KEY}&with_genres=${idGenres}&lenguage=${LANG}`;
+
+        return fetch(url).then((response)=>{
+                return response.json();
+        }).then((result)=>{
+                return result;
+        })
+
+}
