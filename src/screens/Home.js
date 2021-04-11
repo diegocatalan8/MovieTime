@@ -76,7 +76,7 @@ export default function Home(props){
 
 const styles = StyleSheet.create({
     news:{
-        marginVertical:10
+        marginVertical:10 
     },
 
     newsTitle:{
