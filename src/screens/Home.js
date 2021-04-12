@@ -13,7 +13,7 @@ import {getNewsMoviesApi, getAllGenresApi, getGenreMoviesApi} from "../api/movie
 export default function Home(props){
     //destructuramos props
     const {navigation} = props;
-    //Creamos un estado para obtener las peliculas
+    //Creamos un estado para obtener las peliculas nuevas
     const [newMovies, setNewMovies] = useState(null);
     //creamos un estado para obtener los generos de las peliculas
     const [genreList, setGenreList]= useState([]);

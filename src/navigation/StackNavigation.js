@@ -44,7 +44,7 @@ export default function StackNavigation(props){
     return(
     <Stack.Navigator>
         <Stack.Screen name="home" component={Home} options={{title:"MovieTime", headerLeft:()=>buttonLeft(), headerRight:()=>buttonRight()}}/>
-        <Stack.Screen name="movie" component={Movie} options={{title:"" , headerLeft:()=>buttonLeft("movie"), headerRight:()=>buttonRight()}}/>
+        <Stack.Screen name="movie" component={Movie} options={{title:"" , headerTransparent:true, headerLeft:()=>buttonLeft("movie"), headerRight:()=>buttonRight()}}/>
         <Stack.Screen name="news" component={News} options={{title:"Nuevas Peliculas", headerLeft:()=>buttonLeft("news"), headerRight:()=>buttonRight()}}/>
         <Stack.Screen name="popular" component={Popular} options={{title:"Peliculas Populares", headerLeft:()=>buttonLeft("popular"), headerRight:()=>buttonRight()}}/>
         <Stack.Screen name="search" component={Search} options={{title:"", headerLeft:()=>buttonLeft("search")}}/>
