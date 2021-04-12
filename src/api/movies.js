@@ -59,3 +59,13 @@ export function  getGenreMoviesApi(idGenres) {
         })
 
 }
+//peticion para obtener los datos de la pelicula
+export function getMovieById(idMovie){
+        const url = `${API_HOST}/movie/${idMovie}?api_key=${API_KEY}&lenguage=${LANG}`;
+
+        return fetch(url).then((response)=>{
+                return response.json();
+        }).then((result)=>{
+                return result;
+        })
+}
