@@ -8,7 +8,7 @@ import {BASE_PATH_IMG} from "../utils/constants";
 export default function Movie(props){
      const {route} = props;
      const {id} = route.params;
-     console.log(id);
+     //console.log(id);
      const [movie, setMovie] = useState(null);
      const [image, setImage] = useState(null);
      const [showVideo, setShowVideo] = useState(false);
@@ -28,7 +28,7 @@ export default function Movie(props){
                <MovieImage posterPath={image}/>
                <MovieTrailer setShowVideo={setShowVideo}/>
           </ScrollView>
-          <ModalVideo show={showVideo} setShow={setShowVideo}/>
+          <ModalVideo show={showVideo} setShow={setShowVideo} idMovie={id}/>
      </React.Fragment>    
 );
 }
