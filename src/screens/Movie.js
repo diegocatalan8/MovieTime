@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import {View, ScrollView, StyleSheet, Image} from "react-native";
 import {IconButton, Text, Title} from "react-native-paper";
 import {getMovieByIdApi} from "../api/movies";
+import {map} from "lodash";
 import ModalVideo from "../components/ModalVideo";
 import {BASE_PATH_IMG} from "../utils/constants";
 
@@ -27,8 +28,10 @@ export default function Movie(props){
           <ScrollView>
                <MovieImage posterPath={image}/>
                <MovieTrailer setShowVideo={setShowVideo}/>
+               <MovieTitle movie={movie}/>
           </ScrollView>
           <ModalVideo show={showVideo} setShow={setShowVideo} idMovie={id}/>
+          
      </React.Fragment>    
 );
 }
@@ -58,6 +61,24 @@ function MovieTrailer(props){
           </View>
      );
 
+
+}
+function MovieTitle(props){
+     const {movie} =props;
+     
+     return(
+          <View style={styles.viewInfo}>
+               <Title>{movie.title}</Title>
+               <View style={styles.viewGenres}>
+          
+               {map(movie.genres, (genre) => (
+                    <Text key={genre.id} style={styles.genre}>
+                      {genre.name}
+                    </Text>
+                  ))}
+               </View>
+          </View>
+     );
 
 }
 
@@ -90,5 +111,16 @@ const styles = StyleSheet.create({
           width:60,
           height:60,
           borderRadius:100,
+     },
+     viewInfo:{
+          marginHorizontal:30,
+     },
+     viewGenres:{
+          flexDirection:"row",
+
+     },
+     genre:{
+          marginRight:20,
+          color:"#8697a5"
      }
 });
