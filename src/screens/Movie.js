@@ -25,10 +25,12 @@ export default function Movie(props){
   if(!movie) return null;
    return( 
      <React.Fragment>
-          <ScrollView>
+          <ScrollView showsHorizontalScrollIndicator={false}>
                <MovieImage posterPath={image}/>
                <MovieTrailer setShowVideo={setShowVideo}/>
                <MovieTitle movie={movie}/>
+               <Text style={styles.overview}>{movie.overview}</Text>
+               <Text style={[styles.overview, {marginBottom:30}]}>Fecha de lanzamiento: {movie.release_date}</Text>
           </ScrollView>
           <ModalVideo show={showVideo} setShow={setShowVideo} idMovie={id}/>
           
@@ -122,5 +124,11 @@ const styles = StyleSheet.create({
      genre:{
           marginRight:20,
           color:"#8697a5"
+     },
+     overview:{
+          marginHorizontal:30,
+          marginTop:20,
+          textAlign:"justify",
+          color:"#8697a5",
      }
 });
