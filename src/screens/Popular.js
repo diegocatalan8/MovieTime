@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {StyleSheet, ScrollView, View, Image} from "react-native";
-import {Text} from "react-native-paper";
+import {Text, Title} from "react-native-paper";
 import {map} from "lodash";
 import {getPopularMoviesApi} from "../api/movies";
 import {BASE_PATH_IMG} from "../utils/constants"
@@ -27,7 +27,6 @@ export default function Popular(props){
        
             {map(movies, (movie, index)=>(
                 <Movie key={index} movie={movie} />  
-               
             ))}
           
         </ScrollView>
@@ -35,10 +34,8 @@ export default function Popular(props){
 }
 
 function Movie(props){
-    
-  
     const {movie} = props;
-    const {poster_path}=movie;
+    const {poster_path, title, release_date, vote_count, vote_average}=movie;
 
 
     
@@ -52,7 +49,9 @@ function Movie(props){
                 </View>
 
                 <View>
-                    <Text>right</Text>
+                    <Title>{title}</Title>
+                    <Text style={{fontSize:12, color: "#8697a5", marginTop:5}}>{release_date}</Text>
+                    <Text>{vote_count} votos</Text>
                 </View>
         </View>
     );
