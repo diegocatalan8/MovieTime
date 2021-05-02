@@ -3,7 +3,9 @@ import {StyleSheet, View, ScrollView, Dimensions, Image, TouchableWithoutFeedbac
 import {Button, Text} from "react-native-paper";
 import {map} from "lodash";
 import {getNewsMoviesApi} from "../api/movies"
+import {BASE_PATH_IMG} from "../utils/constants"
 
+const {width} = Dimensions.get("window");
 
 export default function News(props){
    const {navigation} = props;
@@ -16,22 +18,55 @@ export default function News(props){
       })
    }, []);
 
+   
+
 
    return(
-         <ScrollView>
+         <ScrollView >
+         <View style={styles.container}>
                   {map(movies, (movie, index)=>(
                      <Movie key={index} movie={movie}/>) 
                   )}
+         </View>
          </ScrollView>
    );
 }
 
 function Movie(props){
    const {movie}= props;
-   const {title}=movie;
+   const {id, title, poster_path}=movie;
    return(
-         <View>
-            <Text>{title}</Text>
+         <View style={styles.movie}>
+            {poster_path ? 
+               (
+            <Image
+            style={styles.image}
+            source={{ uri:`${BASE_PATH_IMG}/w500${poster_path}`}} />
+            ) 
+            :
+            (
+               <Text>{title}</Text>
+            )
+         }
          </View>
    );
 }
+
+const styles = StyleSheet.create({
+   container:{
+      flex: 1,
+      flexDirection: "row",
+      flexWrap: "wrap",
+   },
+   movie:{
+      width: width / 3,
+      height:200,
+      justifyContent:"center",
+      alignItems:"center",
+   },
+   image:{
+      width: "100%",
+      height: "100%",
+   }
+
+});
